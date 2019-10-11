@@ -14,6 +14,7 @@
 #include "lcd.h"
 #include "switch.h"
 #include "Service.h"
+<<<<<<< HEAD
 #include "micro_config.h"
 
 int main(void){
@@ -37,6 +38,16 @@ int main(void){
 			}
 		}
 		UART_sendByte(data);
+=======
+
+int main(void){
+	uint16 data =0;
+	UART_init();
+	LCD_init();
+	LCD_displayString("The Value = ");
+	while(1){
+		data =UART_recieveByte();
+>>>>>>> Micro_Controller_2_Drivers
 		LCD_goToRowCol(0,13);
 		LCD_intgerToString(data);
 	}
