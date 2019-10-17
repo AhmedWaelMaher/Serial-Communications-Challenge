@@ -14,9 +14,8 @@
 #define SPI_H_
 
 #include "std_types.h"
-#include "common_macros.h"
-#include "Regs.h"
 #include "micro_config.h"
+#include "common_macros.h"
 
 /*******************************************************************************
  *                      Functions Prototypes                                   *
