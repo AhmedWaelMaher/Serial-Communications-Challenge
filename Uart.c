@@ -171,7 +171,7 @@ uint8 status=OK;
 
 		case  POOLING :
 			UCSRB&=~(1<<RXCIE);		// RX COMPLETE DISABLED
-			UCSRB&=~(1<<RXCIE);		// TX COMPLETE DISABLED
+			UCSRB&=~(1<TXCIE);		// TX COMPLETE DISABLED
 		break;
 
 		case INTERRUPT : 
@@ -271,7 +271,7 @@ ISR(USART_RXC_vect)
 }
 
 
-ISR(USART_TXC_vect)
+ISR(USART_UDRE_vect)
 {
 	if(Tx_Flag==1){
 	tx();
