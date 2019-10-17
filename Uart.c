@@ -177,7 +177,7 @@ uint8 status=OK;
 		case INTERRUPT : 
 			sei();  // Global INTERRUPT Enable
 				UCSRB|=(1<<RXCIE);		// RX Enable
-				UCSRB|=(1<<RXCIE);		// Tx Enable
+				UCSRB|=(1<<TXCIE);		// Tx Enable
 			break;
 			
 		default:
