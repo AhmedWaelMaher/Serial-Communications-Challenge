@@ -1,4 +1,4 @@
- /******************************************************************************
+/******************************************************************************
  *
  * Module: SPI
  *
@@ -14,12 +14,12 @@
 #define SPI_H_
 
 #include "std_types.h"
-#include "micro_config.h"
 #include "common_macros.h"
 
 /*******************************************************************************
  *                      Functions Prototypes                                   *
  *******************************************************************************/
+void SPI_init(void);
 void SPI_initMaster(void); 
 void SPI_initSlave(void);
 void SPI_sendByte(const uint8 data);

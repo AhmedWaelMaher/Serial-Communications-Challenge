@@ -1,4 +1,4 @@
- /******************************************************************************
+/******************************************************************************
  *
  * Module: SPI
  *
@@ -19,15 +19,15 @@ void SPI_initMaster(void)
 {
 	/******** Configure SPI Master Pins *********
 	 * SS(PB4)   --> Output
-	 * MOSI(PB5) --> Output 
+	 * MOSI(PB5) --> Output
 	 * MISO(PB6) --> Input
 	 * SCK(PB7) --> Output
 	 ********************************************/
 	DDRB = DDRB | (1<<PB4);
 	DDRB = DDRB | (1<<PB5);
-	DDRB = DDRB & ~(1<<PB6);
+	DDRB = DDRB & (~(1<<PB6));
 	DDRB = DDRB | (1<<PB7);
-	
+
 	SPCR = (1<<SPE) | (1<<MSTR); // enable SPI + enable Master + choose SPI clock = Fosc/4
 }
 
@@ -39,7 +39,7 @@ void SPI_initSlave(void)
 	 * MISO(PB6) --> Output
 	 * SCK(PB7) --> Input
 	 ********************************************/
-	DDRB = DDRB & (~(1<<PB4));  
+	DDRB = DDRB & (~(1<<PB4));
 	DDRB = DDRB & (~(1<<PB5));
 	DDRB = DDRB | (1<<PB6);
 	DDRB = DDRB & (~(1<<PB7));
@@ -48,14 +48,15 @@ void SPI_initSlave(void)
 
 void SPI_sendByte(const uint8 data) 
 {
+
 	SPDR = data; //send data by SPI
 	while(BIT_IS_CLEAR(SPSR,SPIF)){} //wait until SPI interrupt flag=1 (data is sent correctly)
 }
 
 uint8 SPI_recieveByte(void)
 {
-   while(BIT_IS_CLEAR(SPSR,SPIF)){} //wait until SPI interrupt flag=1(data is receive correctly)
-   return SPDR; //return the received byte from SPI data register
+	while(BIT_IS_CLEAR(SPSR,SPIF)){} //wait until SPI interrupt flag=1(data is receive correctly)
+	return SPDR; //return the received byte from SPI data register
 }
 
 void SPI_SendString(const uint8 *Str)
